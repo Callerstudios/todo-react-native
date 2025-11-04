@@ -25,7 +25,6 @@ export default function RootLayout() {
     <ConvexProvider client={convex}>
       <ThemeProvider theme={selectedTheme}>
         <ThemeProviderWrapper>
-          {" "}
           {/* provide toggleTheme + theme to all screens */}
           <Stack screenOptions={{ headerShown: false }} />
         </ThemeProviderWrapper>
