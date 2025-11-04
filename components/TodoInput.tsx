@@ -14,7 +14,7 @@ export default function TodoInput({
       <TextInput
         value={text}
         onChangeText={setText}
-        placeholder="Add a todo..."
+        placeholder="Add a todo...dscx"
         style={{
           flex: 1,
           padding: 12,

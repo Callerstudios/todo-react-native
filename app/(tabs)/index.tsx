@@ -1,101 +1,29 @@
 import React, { useState } from "react";
-import styled, { useTheme } from "styled-components/native";
-import { FlatList, TouchableOpacity } from "react-native";
+import {
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
+  TextInput,
+  View,
+  Text,
+  Image,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import { useThemeContext } from "../../contexts/ThemeContext"; // use context now
+import { useThemeContext } from "../../contexts/ThemeContext";
+import { darkTheme, lightTheme } from "../../constants/theme"; // your theme objects
 
-// 🎨 styled components
-const Background = styled(LinearGradient)`
-  flex: 1;
-`;
-const Container = styled(SafeAreaView)`
-  flex: 1;
-  align-items: center;
-  padding: 20px;
-`;
-const Header = styled.View`
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-const Title = styled.Text`
-  font-size: 28px;
-  font-weight: 700;
-  color: white;
-  letter-spacing: 10px;
-`;
-const ToggleButton = styled.TouchableOpacity`
-  padding: 8px;
-`;
-const InputBox = styled.View`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.card};
-  border-radius: 10px;
-  padding: 14px 18px;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-  elevation: 4;
-`;
-const Input = styled.TextInput`
-  flex: 1;
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 16px;
-`;
-const TodoCard = styled.View`
-  background-color: ${({ theme }) => theme.colors.card};
-  border-radius: 10px;
-  padding: 14px 18px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom-width: 1px;
-  border-bottom-color: ${({ theme }) => theme.colors.border};
-`;
-const TodoText = styled.Text<{ completed?: boolean }>`
-  color: ${({ theme, completed }) =>
-    completed ? theme.colors.textMuted : theme.colors.text};
-  text-decoration-line: ${({ completed }) =>
-    completed ? "line-through" : "none"};
-  font-size: 16px;
-`;
-const Footer = styled.View`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.card};
-  border-radius: 10px;
-  padding: 16px 20px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-`;
-const FilterTabs = styled.View`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.card};
-  border-radius: 10px;
-  padding: 14px 20px;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 20px;
-`;
-const FilterText = styled.Text<{ active?: boolean }>`
-  color: ${({ theme, active }) =>
-    active ? theme.colors.primary : theme.colors.textMuted};
-  font-weight: ${({ active }) => (active ? "700" : "500")};
-`;
+const { height, width } = Dimensions.get("window");
 
-// 📱 main component
 export default function TodoScreen() {
-  const theme = useTheme();
-  const { theme: themeMode, toggleTheme } = useThemeContext(); // use context
+  const { theme: themeMode, toggleTheme } = useThemeContext();
 
-  // ✅ Convex hooks
+  // Select theme based on mode
+  const themeToUse = themeMode === "dark" ? darkTheme : lightTheme;
+
   const todos = useQuery(api.todos.list) || [];
   const addTodo = useMutation(api.todos.add);
   const toggleTodo = useMutation(api.todos.toggle);
@@ -112,7 +40,10 @@ export default function TodoScreen() {
         : true
   );
 
-  const gradientColors = [theme.colors.gradientFrom, theme.colors.gradientTo];
+  const gradientColors: [string, string] = [
+    themeToUse.colors.gradientFrom,
+    themeToUse.colors.gradientTo,
+  ];
 
   const handleAdd = async () => {
     if (!newTodo.trim()) return;
@@ -121,45 +52,107 @@ export default function TodoScreen() {
   };
 
   return (
-    <Background colors={gradientColors}>
-      <Container>
+    <LinearGradient
+      colors={gradientColors}
+      style={{ flex: 1, backgroundColor: themeToUse.colors.background }}
+    >
+      {/* Absolute image */}
+      <Image
+        source={
+          themeMode === "light"
+            ? require("../../assets/images/bg-image-light.jpg")
+            : require("../../assets/images/bg-image-dark.jpg")
+        }
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: width,
+          height: height * 0.3,
+          resizeMode: "cover",
+        }}
+      />
+
+      <SafeAreaView style={{ flex: 1, alignItems: "center", padding: 20 }}>
         {/* HEADER */}
-        <Header>
-          <Title>TODO</Title>
-          <ToggleButton onPress={toggleTheme}>
+        <View
+          style={{
+            width: "100%",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 28,
+              fontWeight: "700",
+              color: "white",
+              letterSpacing: 10,
+            }}
+          >
+            TODO
+          </Text>
+          <TouchableOpacity style={{ padding: 8 }} onPress={toggleTheme}>
             {themeMode === "light" ? (
               <Feather name="moon" size={24} color="#fff" />
             ) : (
               <Feather name="sun" size={24} color="#fff" />
             )}
-          </ToggleButton>
-        </Header>
+          </TouchableOpacity>
+        </View>
 
         {/* INPUT */}
-        <InputBox>
+        <View
+          style={{
+            width: "100%",
+            backgroundColor: themeToUse.colors.card,
+            borderRadius: 10,
+            paddingHorizontal: 18,
+            paddingVertical: 14,
+            flexDirection: "row",
+            alignItems: "center",
+            marginBottom: 20,
+            elevation: 4,
+          }}
+        >
           <Feather
             name="circle"
             size={20}
-            color={theme.colors.border}
+            color={themeToUse.colors.border}
             style={{ marginRight: 10 }}
           />
-          <Input
+          <TextInput
+            style={{ flex: 1, color: themeToUse.colors.text, fontSize: 16 }}
             placeholder="Create a new todo..."
-            placeholderTextColor={theme.colors.textMuted}
+            placeholderTextColor={themeToUse.colors.textMuted}
             value={newTodo}
             onChangeText={setNewTodo}
             onSubmitEditing={handleAdd}
             returnKeyType="done"
-            blurOnSubmit={true}
+            blurOnSubmit
           />
-        </InputBox>
+        </View>
 
         {/* TODO LIST */}
         <FlatList
           data={filteredTodos}
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
-            <TodoCard>
+            <View
+              style={{
+                width: "100%",
+                backgroundColor: themeToUse.colors.card,
+                paddingHorizontal: 18,
+                paddingVertical: 14,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                borderBottomWidth: 1,
+                borderBottomColor: themeToUse.colors.border,
+              }}
+            >
               <TouchableOpacity
                 onPress={async () => {
                   try {
@@ -173,31 +166,57 @@ export default function TodoScreen() {
                   <Feather
                     name="check-circle"
                     size={20}
-                    color={theme.colors.primary}
+                    color={themeToUse.colors.primary}
                   />
                 ) : (
                   <Feather
                     name="circle"
                     size={20}
-                    color={theme.colors.border}
+                    color={themeToUse.colors.border}
                   />
                 )}
               </TouchableOpacity>
 
-              <TodoText completed={item.completed}>{item.title}</TodoText>
+              <Text
+                style={{
+                  color: item.completed
+                    ? themeToUse.colors.textMuted
+                    : themeToUse.colors.text,
+                  textDecorationLine: item.completed ? "line-through" : "none",
+                  fontSize: 16,
+                }}
+              >
+                {item.title}
+              </Text>
 
               <TouchableOpacity onPress={() => removeTodo({ id: item._id })}>
-                <Feather name="x" size={20} color={theme.colors.textMuted} />
+                <Feather
+                  name="x"
+                  size={20}
+                  color={themeToUse.colors.textMuted}
+                />
               </TouchableOpacity>
-            </TodoCard>
+            </View>
           )}
         />
 
         {/* FOOTER */}
-        <Footer>
-          <TodoText>
+        <View
+          style={{
+            width: "100%",
+            backgroundColor: themeToUse.colors.card,
+            borderRadius: 10,
+            paddingHorizontal: 20,
+            paddingVertical: 16,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 10,
+          }}
+        >
+          <Text style={{ color: themeToUse.colors.text }}>
             {todos.filter((t) => !t.completed).length} items left
-          </TodoText>
+          </Text>
           <TouchableOpacity
             onPress={() =>
               todos
@@ -205,24 +224,45 @@ export default function TodoScreen() {
                 .forEach((t) => removeTodo({ id: t._id }))
             }
           >
-            <TodoText>Clear Completed</TodoText>
+            <Text style={{ color: themeToUse.colors.text }}>
+              Clear Completed
+            </Text>
           </TouchableOpacity>
-        </Footer>
+        </View>
 
         {/* FILTERS */}
-        <FilterTabs>
+        <View
+          style={{
+            width: "100%",
+            backgroundColor: themeToUse.colors.card,
+            borderRadius: 10,
+            paddingHorizontal: 20,
+            paddingVertical: 14,
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: 20,
+          }}
+        >
           {["All", "Active", "Completed"].map((tab) => (
             <TouchableOpacity
               key={tab}
               onPress={() => setFilter(tab.toLowerCase() as any)}
             >
-              <FilterText active={filter === tab.toLowerCase()}>
+              <Text
+                style={{
+                  color:
+                    filter === tab.toLowerCase()
+                      ? themeToUse.colors.primary
+                      : themeToUse.colors.textMuted,
+                  fontWeight: filter === tab.toLowerCase() ? "700" : "500",
+                }}
+              >
                 {tab}
-              </FilterText>
+              </Text>
             </TouchableOpacity>
           ))}
-        </FilterTabs>
-      </Container>
-    </Background>
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }

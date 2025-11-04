@@ -3,6 +3,9 @@
     "production": {
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_CONVEX_URL": "https://enchanted-owl-110.convex.cloud"
       }
     }
   }
