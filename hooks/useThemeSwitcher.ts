@@ -20,9 +20,7 @@ export function useThemeSwitcher() {
           const sys = Appearance.getColorScheme();
           setTheme(sys === "dark" ? "dark" : "light");
         }
-      } catch (e) {
-        // ignore and use default
-      } finally {
+     } finally {
         setReady(true);
       }
     })();

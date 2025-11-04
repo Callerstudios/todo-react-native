@@ -1,20 +1,21 @@
-// constants/theme.ts
-export const lightTheme = {
-  mode: "light",
-  background: "#F9FAFB",
-  text: "#111827",
-  card: "#FFFFFF",
-  border: "#E5E7EB",
-  accent: "#6366F1",
+import { DefaultTheme } from "styled-components/native";
+
+export const lightTheme: DefaultTheme = {
+  colors: {
+    background: "#FFFFFF",
+    text: "#000000",
+    card: "#F5F5F5",
+    border: "#E5E5E5",
+    primary: "#007AFF",
+  },
 };
 
-export const darkTheme = {
-  mode: "dark",
-  background: "#0b1220",
-  text: "#F9FAFB",
-  card: "#0f1724",
-  border: "#1f2937",
-  accent: "#7c3aed",
+export const darkTheme: DefaultTheme = {
+  colors: {
+    background: "#000000",
+    text: "#FFFFFF",
+    card: "#1C1C1E",
+    border: "#2C2C2E",
+    primary: "#0A84FF",
+  },
 };
-
-export type Theme = typeof lightTheme;
