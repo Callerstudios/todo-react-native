@@ -1,7 +1,10 @@
 {
   "expo": {
-    "name": "todo-react-native",
-    "slug": "todo-react-native",
+    "cli": {
+      "appVersionSource": "appJson"
+    },
+    "name": "TodoApp",
+    "slug": "todoapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -12,6 +15,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.rxbusari.myapp",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -43,6 +48,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "f75b487c-be11-43e7-b243-3041a2adc362"
+      }
     }
   }
 }
