@@ -7,6 +7,10 @@ declare module 'styled-components/native' {
       border: string;
       card: string;
       text: string;
-    }
+      primary: string;
+      gradientFrom: string;
+      gradientTo: string;
+      textMuted: string;
+    };
   }
 }

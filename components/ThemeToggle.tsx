@@ -3,7 +3,7 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { Moon, Sun } from "lucide-react-native";
 import styled, { useTheme } from "styled-components/native";
-import { useThemeSwitcher } from "@/hooks/useThemeSwitcher";
+import { useThemeSwitcher } from "../hooks/useThemeSwitcher";
 
 const ToggleButton = styled(TouchableOpacity)`
   position: absolute;

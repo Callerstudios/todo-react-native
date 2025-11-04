@@ -1,50 +1,131 @@
-# Welcome to your Expo app 👋
+# :clipboard: Stage 3b — Todo List App with Theme Switcher
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to **Frontend Wizards Stage 3b**! :tada:  
+In this project, you will build a **sophisticated Todo List application** with **real-time backend integration**, **light/dark theme support**, and a **pixel-perfect implementation** of the provided Figma design.
 
-## Get started
+---
 
-1. Install dependencies
+## :point_right: Figma Design
+- [Todo App Figma](https://www.figma.com/design/NRbd5hcrQcAa1LBbctUhf9/todo-app?node-id=0-1&p=f&m=dev)  
+Use this as your **source of truth** for the UI and UX.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## :books: Recommended Study Material
 
-   ```bash
-   npx expo start
-   ```
+- **React Native Docs:** [Getting Started](https://reactnative.dev/docs/getting-started)  
+- **Convex for React Native:** [Docs](https://docs.convex.dev/quickstart/react-native)  
+- **State Management:** [React Native State](https://reactnative.dev/docs/state)  
+- **Navigation:** [React Navigation](https://reactnavigation.org/)  
+- **Styled Components & Theming:** [Docs](https://styled-components.com/docs/basics#react-native)  
+- **Expo Docs:** [Docs](https://docs.expo.dev/)  
+- **Expo Router:** [Introduction](https://docs.expo.dev/router/introduction/)  
+- **Create First App with Expo:** [Tutorial](https://docs.expo.dev/tutorial/create-your-first-app/)
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## :memo: Project Overview
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Requirements
+- Build with **React Native** (Expo recommended)  
+- Pixel-perfect implementation of the **Figma design**  
+- Support **light/dark themes** with smooth transitions  
+- Persist theme preference across app restarts  
 
-## Get a fresh project
+### Core Features
 
-When you're ready, run:
+#### :art: Theme Switcher
+- Light and dark themes  
+- Smooth transition animations  
+- Theme affects **all UI elements**: backgrounds, text, buttons, etc.  
+- Persist user preference across app restarts  
 
+#### :white_check_mark: Todo CRUD Operations (Convex)
+- **Create:** Add todos with title, description, and due date  
+- **Read:** Fetch and display todos in **real-time**  
+- **Update:** Edit todos or toggle complete/incomplete  
+- **Delete:** Remove todos (swipe-to-delete or buttons)  
+
+#### :iphone: UI/UX Features
+- Search and filter todos  
+- Empty states & loading indicators  
+- Drag-and-sort functionality  
+
+---
+
+## :white_check_mark: Acceptance Criteria
+- Pixel-perfect implementation matching Figma  
+- Smooth theme switching with persistent preferences  
+- Full CRUD functionality with **real-time updates** via Convex  
+- Proper error handling for network & validation  
+- Responsive on all device sizes  
+- Clean, modular, and documented code  
+- Accessibility compliance (contrast, screen reader support)  
+
+---
+
+## :rocket: Getting Started
+
+### 1. Clone the Repository
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/todo-theme-app.git
+cd todo-theme-app
 ```
+2. Install Dependencies
+``` bash
+Copy code
+npm install
+# or
+yarn install
+```
+3. Environment Variables
+Create a .env file in the root directory:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+ini
+Copy code
+NEXT_PUBLIC_CONVEX_URL=your_convex_project_url
+4. Run the App (Development)
+``` bash
+Copy code
+npx expo start
+# or
+yarn expo start
+```
+Open on your device or simulator via Expo Go.
 
-## Learn more
+:hammer_and_wrench: Convex Setup
+Sign up at Convex
 
-To learn more about developing your project with Expo, look at the following resources:
+Create a new project
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Configure your Convex backend in the .env file
 
-## Join the community
+Ensure your queries and mutations are set up for:
 
-Join our community of developers creating universal apps.
+Create, read, update, delete todos
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Real-time subscription for updates
+
+:page_facing_up: Submission
+Submit:
+APK file of the app
+
+Demo video with voice-over showing all requirements
+
+GitHub repository with full source code
+
+README.md including setup instructions, environment configuration, and Convex setup steps
+
+Checklist:
+CRUD operations fully functional
+
+Theme switcher works correctly
+
+Real-time updates functional
+
+Clean, modular, documented code
+
+README contains all instructions for setup and running
+
+:sparkles: Author
+Frontend Wizards Stage 3b Student Project
