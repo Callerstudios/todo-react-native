@@ -2,9 +2,9 @@ import { DefaultTheme } from "styled-components/native";
 
 export const lightTheme: DefaultTheme = {
   colors: {
-    background: "#f5f5f5", // light gray background
-    gradientFrom: "#af67e9", // top gradient color
-    gradientTo: "#6565e7", // bottom gradient color
+    background: "#f7f7f8", // light gray background
+    gradientFrom: "#f7f7f8", // top gradient color
+    gradientTo: "#f7f7f8", // bottom gradient color
     text: "#4d4d4d",
     textMuted: "#9495a5",
     card: "#ffffff",
