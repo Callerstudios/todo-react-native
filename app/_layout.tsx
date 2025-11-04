@@ -1,24 +1,32 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+// app/_layout.tsx
+import React from "react";
+import { Stack } from "expo-router";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ThemeProvider } from "styled-components/native";
+import { useThemeSwitcher } from "../hooks/useThemeSwitcher";
+import { lightTheme, darkTheme } from "../constants/theme";
+import { ActivityIndicator, View } from "react-native";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!);
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const { theme, ready } = useThemeSwitcher();
+  const selectedTheme = theme === "dark" ? darkTheme : lightTheme;
+
+  if (!ready) {
+    // prevent flicker while we load persisted theme
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <ConvexProvider client={convex}>
+      <ThemeProvider theme={selectedTheme || lightTheme}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </ThemeProvider>
+    </ConvexProvider>
   );
 }
