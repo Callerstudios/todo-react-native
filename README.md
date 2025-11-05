@@ -1,131 +1,173 @@
-# :clipboard: Stage 3b — Todo List App with Theme Switcher
+# 🚀 Frontend Wizards — Stage 3b: Advanced Todo List with Theme Switcher
 
-Welcome to **Frontend Wizards Stage 3b**! :tada:  
-In this project, you will build a **sophisticated Todo List application** with **real-time backend integration**, **light/dark theme support**, and a **pixel-perfect implementation** of the provided Figma design.
+## 🎥 Demo & APK Links
 
----
+📱 **APK Download:** [Download APK](https://drive.google.com/file/d/19kUFG6mzq2RmHlK1g1OoKSXu7_CkjjKy/view?usp=drive_link)  
+🎬 **Demo Video:** [Watch Demo](https://drive.google.com/file/d/159Rxa6J9-02TnFDmI1slJkaTCDO9rVz1/view?usp=sharing)
 
-## :point_right: Figma Design
-- [Todo App Figma](https://www.figma.com/design/NRbd5hcrQcAa1LBbctUhf9/todo-app?node-id=0-1&p=f&m=dev)  
-Use this as your **source of truth** for the UI and UX.
-
----
-
-## :books: Recommended Study Material
-
-- **React Native Docs:** [Getting Started](https://reactnative.dev/docs/getting-started)  
-- **Convex for React Native:** [Docs](https://docs.convex.dev/quickstart/react-native)  
-- **State Management:** [React Native State](https://reactnative.dev/docs/state)  
-- **Navigation:** [React Navigation](https://reactnavigation.org/)  
-- **Styled Components & Theming:** [Docs](https://styled-components.com/docs/basics#react-native)  
-- **Expo Docs:** [Docs](https://docs.expo.dev/)  
-- **Expo Router:** [Introduction](https://docs.expo.dev/router/introduction/)  
-- **Create First App with Expo:** [Tutorial](https://docs.expo.dev/tutorial/create-your-first-app/)
+Welcome to **Stage 3b!**  
+Time to build a sophisticated Todo List application with theme switching and real-time backend integration using **Convex** 🎉
 
 ---
 
-## :memo: Project Overview
+## 📝 Project Overview
 
-### Requirements
-- Build with **React Native** (Expo recommended)  
-- Pixel-perfect implementation of the **Figma design**  
-- Support **light/dark themes** with smooth transitions  
-- Persist theme preference across app restarts  
+In this stage, you’ll:
 
-### Core Features
+- 🧱 Create a **pixel-perfect Todo app** from the provided Figma design  
+- 🌗 Implement **light/dark theme switching**  
+- ⚡ Handle all **CRUD operations** using **Convex** for real-time updates  
 
-#### :art: Theme Switcher
+---
+
+## 🎨 Figma Design  
+👉 [View Design](https://www.figma.com/design/NRbd5hcrQcAa1LBbctUhf9/todo-app?node-id=0-1&p=f&m=dev)
+
+---
+
+## 📚 Study Materials
+
+- [React Native Docs](https://reactnative.dev/docs/getting-started)  
+- [Convex for React Native](https://docs.convex.dev/quickstart/react-native)  
+- [State Management](https://reactnative.dev/docs/state)  
+- [Navigation (React Navigation)](https://reactnavigation.org/)  
+- [Styled Components & Theming](https://styled-components.com/docs/basics#react-native)  
+- [Expo Docs](https://docs.expo.dev/)  
+- [Expo Router](https://docs.expo.dev/router/introduction/)  
+- [Create First App with Expo](https://docs.expo.dev/tutorial/create-your-first-app/)  
+
+---
+
+## 🧩 Requirements
+
+- Use **React Native (Expo recommended)**
+- Implement the **Figma design** pixel-perfectly
+- Support **both light and dark themes** with smooth transitions
+
+---
+
+## ⚙️ Core Features
+
+### 🎨 Theme Switcher
 - Light and dark themes  
 - Smooth transition animations  
-- Theme affects **all UI elements**: backgrounds, text, buttons, etc.  
-- Persist user preference across app restarts  
+- Persist theme preference across app restarts  
+- Theme affects all UI elements (backgrounds, text, buttons, etc.)
 
-#### :white_check_mark: Todo CRUD Operations (Convex)
-- **Create:** Add todos with title, description, and due date  
-- **Read:** Fetch and display todos in **real-time**  
+### ✅ Todo CRUD Operations (Using Convex)
+- **Create:** Add todos (title, description, due date)  
+- **Read:** Fetch and display todos in real-time  
 - **Update:** Edit todos or toggle complete/incomplete  
-- **Delete:** Remove todos (swipe-to-delete or buttons)  
+- **Delete:** Remove todos (swipe-to-delete or buttons)
 
-#### :iphone: UI/UX Features
+### 📱 UI/UX Features
 - Search and filter todos  
 - Empty states & loading indicators  
-- Drag-and-sort functionality  
+- Drag and sort functionality  
 
 ---
 
-## :white_check_mark: Acceptance Criteria
-- Pixel-perfect implementation matching Figma  
+## ✅ Acceptance Criteria
+
+- Pixel-perfect implementation  
 - Smooth theme switching with persistent preferences  
-- Full CRUD functionality with **real-time updates** via Convex  
+- Full CRUD functionality (real-time via Convex)  
 - Proper error handling for network & validation  
-- Responsive on all device sizes  
-- Clean, modular, and documented code  
-- Accessibility compliance (contrast, screen reader support)  
+- Responsive on all screen sizes  
+- Clean, modular code structure  
+- Accessibility compliance (contrast, screen reader support)
 
 ---
 
-## :rocket: Getting Started
+## 🧰 Tech Stack
 
-### 1. Clone the Repository
+- **React Native (Expo)**
+- **Convex Backend**
+- **Styled Components**
+- **React Navigation**
+- **Expo Router**
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone Repository
 ```bash
-git clone https://github.com/your-username/todo-theme-app.git
-cd todo-theme-app
+git clone https://github.com/YOUR_GITHUB_USERNAME/todoapp.git
+cd todoapp
 ```
-2. Install Dependencies
-``` bash
-Copy code
+### 2. Install Dependencies
+```bash
 npm install
 # or
 yarn install
 ```
-3. Environment Variables
-Create a .env file in the root directory:
+### 3. Setup Environment Variables
 
-ini
-Copy code
-NEXT_PUBLIC_CONVEX_URL=your_convex_project_url
-4. Run the App (Development)
+Create a .env file in the root directory with:
 ``` bash
-Copy code
-npx expo start
-# or
-yarn expo start
+EXPO_PUBLIC_CONVEX_URL=https://YOUR-CONVEX-DEPLOYMENT.convex.cloud
+
 ```
-Open on your device or simulator via Expo Go.
+### 4. Run Development Server
+```bash
+npx expo start
+```
+### 5. Build APK (Optional)
+```bash
+eas build -p android --profile preview
+```
+## 🗝️ Convex Setup Steps
 
-:hammer_and_wrench: Convex Setup
-Sign up at Convex
+**1. Install Convex CLI** 
+```bash 
+npm install -g convex
+```
 
-Create a new project
+**2. Log in & initialize Convex**  
+```bash
+npx convex dev
+```
 
-Configure your Convex backend in the .env file
+**3. Deploy to production when ready**  
+```bash
+npx convex deploy
+```
 
-Ensure your queries and mutations are set up for:
+**4. Copy your Convex deployment URL and place it in your `.env` file.**
 
-Create, read, update, delete todos
+---
 
-Real-time subscription for updates
+## 📦 Build Commands
 
-:page_facing_up: Submission
-Submit:
-APK file of the app
+| Command | Description |
+|----------|--------------|
+| `npx expo start` | Run the app in development mode |
+| `npx expo run:android` | Build and install the app on an Android device |
+| `npx expo export` | Export static build |
+| `eas build -p android` | Build an APK via Expo Application Services |
 
-Demo video with voice-over showing all requirements
+---
 
-GitHub repository with full source code
+## 🎥 Demo & APK Links
 
-README.md including setup instructions, environment configuration, and Convex setup steps
+📱 **APK Download:** [Download APK](https://drive.google.com/file/d/19kUFG6mzq2RmHlK1g1OoKSXu7_CkjjKy/view?usp=drive_link)  
+🎬 **Demo Video:** [Watch Demo](https://drive.google.com/file/d/159Rxa6J9-02TnFDmI1slJkaTCDO9rVz1/view?usp=sharing)
 
-Checklist:
-CRUD operations fully functional
+---
 
-Theme switcher works correctly
+## 🧾 Submission Checklist
 
-Real-time updates functional
+- [x] CRUD operations fully functional  
+- [x] Theme switcher works correctly  
+- [x] Real-time updates functional  
+- [x] Code clean and documented  
+- [x] Proper README instructions included  
+- [x] APK and demo video submitted  
 
-Clean, modular, documented code
+---
 
-README contains all instructions for setup and running
+## 💪 Author
 
-:sparkles: Author
-Frontend Wizards Stage 3b Student Project
+**Frontend Wizard — Stage 3b Task**  
+Created by Beekay
